@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Mattéo">
+    <title>M&M Web Design - Accueil</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+</head>
+<body>
+    <header>
+        <h1>M&M Web Design</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="about.html">À propos</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="hero">
+            <h2>Développez votre présence en ligne avec M&M Web Design</h2>
+            <p>Nous créons des sites modernes et optimisés pour les petites entreprises.</p>
+            <a href="contact.html" class="cta">Demandez un devis</a>
+        </section>
+        <section class="features">
+            <div class="feature">
+                <h3>Design personnalisé</h3>
+                <p>Des designs adaptés aux besoins de chaque entreprise.</p>
+            </div>
+            <div class="feature">
+                <h3>Optimisation SEO</h3>
+                <p>Améliorez votre visibilité avec un site bien référencé.</p>
+            </div>
+        </section>
+        <section>
+            <div class="chatbot-container">
+                <div class="chat-header">Chatbot</div>
+                <div class="chat-body" id="chatBody"></div>
+                <div class="chat-footer">
+                  <input type="text" id="userInput" placeholder="Tapez un message..." />
+                  <button onclick="sendMessage()">Envoyer</button>
+                </div>
+              </div>
+            
+              <script>
+                // Fonction pour gérer les messages
+                function sendMessage() {
+                  const chatBody = document.getElementById("chatBody");
+                  const userInput = document.getElementById("userInput");
+                  const userMessage = userInput.value.trim();
+            
+                  if (userMessage) {
+                    // Ajouter le message de l'utilisateur
+                    const userMessageDiv = document.createElement("div");
+                    userMessageDiv.className = "message user";
+                    userMessageDiv.textContent = userMessage;
+                    chatBody.appendChild(userMessageDiv);
+            
+                    // Réponse automatique du chatbot
+                    const botMessageDiv = document.createElement("div");
+                    botMessageDiv.className = "message bot";
+                    botMessageDiv.textContent = getBotResponse(userMessage);
+                    chatBody.appendChild(botMessageDiv);
+            
+                    // Scroll automatique vers le bas
+                    chatBody.scrollTop = chatBody.scrollHeight;
+            
+                    // Effacer l'entrée utilisateur
+                    userInput.value = "";
+                  }
+                }
+            
+                // Fonction pour générer une réponse du bot
+                function getBotResponse(userMessage) {
+                  const responses = {
+                    "bonjour": "Bonjour ! Comment puis-je vous aider ?",
+                    "comment ça va ?": "Je suis un bot, je vais toujours bien 😊",
+                    "au revoir": "Au revoir ! Passez une bonne journée.",
+                    "aide": "Je suis là pour répondre à vos questions. Essayez de me dire 'bonjour' ou 'aide'.",
+                    "en combien de temps un site est fait": "Un site internet chez M&M est livré en maximum 2 semaines",
+                    "combien de temps pour faire un site": "Un site internet chez M&M est livré en maximum 2 semaines"
+                  };
+            
+                  // Réponse par défaut
+                  return responses[userMessage.toLowerCase()] || "Désolé, je ne comprends pas. Veuillez réessayer.";
+                }
+              </script>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 M&M Web Design. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
